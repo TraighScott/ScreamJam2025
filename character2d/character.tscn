@@ -1,22 +1,133 @@
-[gd_scene load_steps=4 format=3 uid="uid://btg2dci11gsl"]
+[gd_scene load_steps=18 format=3 uid="uid://btg2dci11gsl"]
 
-[ext_resource type="Texture2D" uid="uid://n0tj0ftqiwjf" path="res://icon.svg" id="1_bpe6x"]
 [ext_resource type="Script" uid="uid://dtls8i054oxd2" path="res://character2d/character.gd" id="1_vyn5w"]
+[ext_resource type="Texture2D" uid="uid://drj6pnxdhgayu" path="res://character2d/character_assets/Pixel Gnome DEMO - Idle - Still - individual.png" id="2_vyn5w"]
+[ext_resource type="Texture2D" uid="uid://flb8hp33en8e" path="res://character2d/character_assets/Pixel Gnome DEMO - Walk.png" id="3_f0wvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyn5w"]
-size = Vector2(128, 40)
+size = Vector2(16, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4338"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us8v2"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h48w5"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n66y4"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16u36"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(0, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h481p"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(80, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccvhf"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(160, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2d18"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(240, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i32ms"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(0, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beq2d"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(80, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap4xa"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(160, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lvdd"]
+atlas = ExtResource("3_f0wvx")
+region = Rect2(240, 128, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_153iv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vyn5w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4338")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us8v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h48w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n66y4")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16u36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h481p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccvhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2d18")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i32ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap4xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lvdd")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [node name="Character" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.25)
 motion_mode = 1
 script = ExtResource("1_vyn5w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bpe6x")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 44)
+position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_vyn5w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_153iv")
+animation = &"walk_side"
