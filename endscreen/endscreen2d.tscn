@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5uls6lk8nqmv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1iv1"]
+font_size = 30
+
+[node name="Endscreen2d" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 656.0
+color = Color(0, 0.78431374, 0.39215687, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 262.0
+offset_right = 1422.0
+offset_bottom = 349.0
+text = "You got out! Now play the game again,
+ but get caught 5 times for a surprise!"
+label_settings = SubResource("LabelSettings_r1iv1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 417.0
+offset_right = 623.0
+offset_bottom = 448.0
+text = "Play again"
