@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_hit
+
 @onready var _animated_sprite := $AnimatedSprite2D
 
 const SPEED = 150.0
@@ -25,3 +27,8 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * SPEED
 
 	move_and_slide()
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		player_hit.emit()

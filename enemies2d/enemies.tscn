@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cbta4cqgy5of1"]
+[gd_scene load_steps=21 format=3 uid="uid://cbta4cqgy5of1"]
 
 [ext_resource type="Script" uid="uid://oafe4njukai" path="res://enemies2d/enemies.gd" id="1_0h1mh"]
 [ext_resource type="Texture2D" uid="uid://h7kt1pujhdcv" path="res://enemies2d/vampire/Vampires3_Run_with_shadow.png" id="1_53pac"]
@@ -141,10 +141,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1mh"]
 size = Vector2(20, 7)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0h1mh"]
-radius = 14.0
-
-[node name="Enemies" type="CharacterBody2D"]
+[node name="Enemies" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_0h1mh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -155,10 +152,3 @@ animation = &"walk_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_0h1mh")
-
-[node name="HitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_0h1mh")
-
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

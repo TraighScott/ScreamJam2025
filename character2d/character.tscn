@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btg2dci11gsl"]
+[gd_scene load_steps=19 format=3 uid="uid://btg2dci11gsl"]
 
 [ext_resource type="Script" uid="uid://dtls8i054oxd2" path="res://character2d/character.gd" id="1_vyn5w"]
 [ext_resource type="Texture2D" uid="uid://drj6pnxdhgayu" path="res://character2d/character_assets/Pixel Gnome DEMO - Idle - Still - individual.png" id="2_vyn5w"]
@@ -117,6 +117,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0wvx"]
+size = Vector2(20, 9)
+
 [node name="Character" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_vyn5w")
@@ -131,3 +134,11 @@ zoom = Vector2(2.5, 2.5)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_153iv")
 animation = &"walk_side"
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_f0wvx")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
