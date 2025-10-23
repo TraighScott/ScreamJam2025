@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh5rhwn244inx"]
+
+[ext_resource type="Texture2D" uid="uid://by2rnpp828at3" path="res://assets/jumpscare/jumpscare.png" id="1_0bytw"]
+[ext_resource type="Script" uid="uid://186m0qeoo0ct" path="res://jumpscare/jumpscare.gd" id="1_1nfrj"]
+[ext_resource type="AudioStream" uid="uid://cnoe00wumpoj1" path="res://assets/audio/final_60108db6919bc200b087a3a2_239343.mp3" id="2_oojxh"]
+
+[node name="Jumpscare" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nfrj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 653.0
+texture = ExtResource("1_0bytw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oojxh")
+volume_db = -20.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

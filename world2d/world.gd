@@ -17,13 +17,8 @@ func _ready() -> void:
 	player_position = player.global_position
 
 
-func _process(_delta: float) -> void:
-	if death_tracker == 5:
-		pass
-
-
 func _on_exit_gate_body_entered(_body: Node2D) -> void:
-	get_tree().change_scene_to_file('res://endscreen/endscreen2d.tscn')
+	get_tree().call_deferred("change_scene_to_file",'res://endscreen/endscreen2d.tscn')
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
@@ -36,4 +31,12 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 func _on_character_player_hit() -> void:
 	player.global_position = player_position
+	get_tree().call_group("Enemies", "queue_free")
 	death_tracker += 1
+	print(death_tracker)
+	if death_tracker == 5:
+		jumpscare()
+
+
+func jumpscare() -> void:
+	get_tree().call_deferred("change_scene_to_file", 'res://jumpscare/jumpscare.tscn')

@@ -30,5 +30,5 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body.is_in_group("Enemies") :
 		player_hit.emit()
